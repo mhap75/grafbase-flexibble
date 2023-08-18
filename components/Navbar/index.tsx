@@ -1,9 +1,10 @@
 import { NavLinks } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
+import { AuthProviders } from "..";
 
 const Navbar = () => {
-  const session = {};
+  const session = null;
 
   return (
     <nav className="flexBetween navbar">
@@ -14,6 +15,7 @@ const Navbar = () => {
             width={115}
             height={43}
             alt="Home"
+            className="sizeAuto"
           />
         </Link>
         <ul className="text-small hidden gap-7 xl:flex">
