@@ -36,14 +36,6 @@ export const footerLinks = [
     ],
   },
   {
-    title: "Hire developers",
-    links: [
-      "Post a job opening",
-      "Post a freelance project",
-      "Search for developers",
-    ],
-  },
-  {
     title: "Development Resources",
     links: [
       "Freelancing",
@@ -88,7 +80,25 @@ export const footerLinks = [
     ],
   },
   {
+    title: "Hire developers",
+    links: [
+      "Post a job opening",
+      "Post a freelance project",
+      "Search for developers",
+    ],
+  },
+  {
     title: "Brands",
     links: ["Advertise with us"],
   },
+];
+
+export const profileMenuLinks = [
+  {
+    href: "work-preferences",
+    key: "work-preferences",
+    text: "Work Preferences",
+  },
+  { href: "settings", key: "settings", text: "Settings" },
+  { href: "profile", key: "profile", text: "Profile" },
 ];

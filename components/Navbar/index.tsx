@@ -1,10 +1,13 @@
 import { NavLinks } from "@/constants";
+import { getCurrentUser } from "@/utils/getCurrentUser";
 import Image from "next/image";
 import Link from "next/link";
-import { AuthProviders } from "..";
+import { AuthProviders, ProfileMenu } from "..";
 
-const Navbar = () => {
-  const session = null;
+const Navbar = async () => {
+  const session = await getCurrentUser();
+
+  console.log(session);
 
   return (
     <nav className="flexBetween navbar">
@@ -20,7 +23,11 @@ const Navbar = () => {
         </Link>
         <ul className="text-small hidden gap-7 xl:flex">
           {NavLinks.map((link) => (
-            <Link key={link.key} href={link.href}>
+            <Link
+              key={link.key}
+              href={link.href}
+              className="hover:text-primary-purple"
+            >
               {link.text}
             </Link>
           ))}
@@ -28,10 +35,15 @@ const Navbar = () => {
       </div>
 
       <div className="flexCenter gap-4">
-        {session ? (
+        {session?.user ? (
           <>
-            UserPhoto
-            <Link href="/create-project">Share Work</Link>
+            <ProfileMenu session={session} />
+            <Link
+              href="/create-project"
+              className="rounded-lg bg-purple-100 p-2 text-sm font-semibold text-purple-950 hover:opacity-70"
+            >
+              Share Work
+            </Link>
           </>
         ) : (
           <AuthProviders />

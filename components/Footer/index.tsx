@@ -51,7 +51,7 @@ const FooterColumn = ({ link }: { link: ColumnProps }) => (
     <h4 className="font-semibold">{link.title}</h4>
     <ul className="flexCol gap-2">
       {link.links.map((l) => (
-        <Link key={l} href={"/"}>
+        <Link key={l} href={"/"} className="w-fit hover:text-primary-purple">
           {l}
         </Link>
       ))}
