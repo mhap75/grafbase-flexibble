@@ -1,4 +1,5 @@
 import { auth, config, g } from "@grafbase/sdk";
+
 // @ts-ignore
 const User = g
   .model("User", {
@@ -16,6 +17,7 @@ const User = g
   .auth((rules) => {
     rules.public().read();
   });
+
 // @ts-ignore
 const Project = g
   .model("Project", {

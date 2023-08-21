@@ -102,3 +102,20 @@ export const profileMenuLinks = [
   { href: "settings", key: "settings", text: "Settings" },
   { href: "profile", key: "profile", text: "Profile" },
 ];
+
+export const formSections = [
+  { id: "image", placeholder: "", type: "file", text: "Image" },
+  { id: "title", placeholder: "Flexibble", type: "text", text: "Title" },
+  {
+    id: "description",
+    placeholder: "Showcasing remarkable developer skills",
+    text: "Description",
+  },
+  { id: "liveSiteUrl", placeholder: "beautiful.com", type: "url", text: "Live URL" },
+  {
+    id: "githubUrl",
+    placeholder: "github.com/repository",
+    type: "url",
+    text: "Github Repository URL",
+  },
+];

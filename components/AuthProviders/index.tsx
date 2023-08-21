@@ -20,7 +20,6 @@ const AuthProviders = () => {
   useEffect(() => {
     (async (done) => {
       const res = await getProviders();
-      console.log(res);
 
       setProviders(res);
     })();
