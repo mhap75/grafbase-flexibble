@@ -177,4 +177,8 @@
     .sizeFit {
         @apply w-fit h-fit
     }
+
+    .sizeFull {
+        @apply w-full h-full
+    }
 }

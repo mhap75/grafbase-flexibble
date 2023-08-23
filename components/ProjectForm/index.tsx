@@ -1,15 +1,17 @@
 "use client";
 
-import { SessionInterface } from "@/common.type";
+import { ProjectInterface, SessionInterface } from "@/common.type";
 import { Button, CustomMenu, FormField } from "@/components";
 import { categoryFilters, formSections } from "@/constants";
-import { createNewProject, fetchToken } from "@/lib/actions";
+import { createNewProject, editProject, fetchToken } from "@/lib/actions";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { ChangeEvent, useCallback, useReducer, useState } from "react";
 
 type ProjectFormProps = {
-  type: string;
+  type: "create" | "edit";
   session: SessionInterface;
+  project?: ProjectInterface;
 };
 
 const initialState = {
@@ -40,16 +42,17 @@ const submitReducer = (
   }
 };
 
-const ProjectForm = ({ type, session }: ProjectFormProps) => {
+const ProjectForm = ({ type, session, project }: ProjectFormProps) => {
   const [state, dispatch] = useReducer(submitReducer, initialState);
-  const { data, isError, isLoading } = state;
+  const { isError, isLoading } = state;
+  const router = useRouter();
   const [form, setForm] = useState({
-    image: "",
-    title: "",
-    description: "",
-    liveSiteUrl: "",
-    githubUrl: "",
-    category: "",
+    image: project?.image || "",
+    title: project?.title || "",
+    description: project?.description || "",
+    liveSiteUrl: project?.liveSiteUrl || "",
+    githubUrl: project?.githubUrl || "",
+    category: project?.category || "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -61,8 +64,11 @@ const ProjectForm = ({ type, session }: ProjectFormProps) => {
     try {
       if (type === "create") {
         await createNewProject(form, session?.user?.id, token);
+      } else {
+        await editProject(form, project?.id as string, token);
       }
       dispatch({ type: "SUCCESS", payload: null });
+      router.push("/");
     } catch (error: any) {
       dispatch({ type: "FAILURE" });
     }

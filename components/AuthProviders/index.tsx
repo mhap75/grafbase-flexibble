@@ -32,7 +32,7 @@ const AuthProviders = () => {
           <button
             onClick={() => signIn(provider?.id)}
             key={i}
-            className="rounded-lg p-2 hover:bg-purple-100"
+            className="rounded-lg bg-purple-500 p-2 text-white hover:opacity-70"
           >
             {provider.id === "google" && "Sign in with Google"}
           </button>

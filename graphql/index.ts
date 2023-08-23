@@ -37,7 +37,7 @@ export const deleteProjectMutation = `
     }
   }
 `;
-      
+
 export const createUserMutation = `
 	mutation CreateUser($input: UserCreateInput!) {
 		userCreate(input: $input) {
@@ -55,33 +55,63 @@ export const createUserMutation = `
 `;
 
 export const projectsQuery = `
-  query getProjects($category: String, $endcursor: String) {
-    projectSearch(first: 8, after: $endcursor, filter: {category: {eq: $category}}) {
-      pageInfo {
-        hasNextPage
-        hasPreviousPage
-        startCursor
-        endCursor
-      }
-      edges {
-        node {
-          title
-          githubUrl
-          description
-          liveSiteUrl
+query getProjects($endcursor: String) {
+  projectSearch(first: 8, after: $endcursor) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      node {
+        title
+        githubUrl
+        description
+        liveSiteUrl
+        id
+        image
+        category
+        createdBy {
           id
-          image
-          category
-          createdBy {
-            id
-            email
-            name
-            avatarUrl
-          }
+          email
+          name
+          avatarUrl
         }
       }
     }
   }
+}
+`;
+
+export const categoriesQuery = `
+query getProjects($category: String, $endcursor: String) {
+  projectSearch(first: 8, after: $endcursor, filter: {category: {eq: $category}}) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      node {
+        title
+        githubUrl
+        description
+        liveSiteUrl
+        id
+        image
+        category
+        createdBy {
+          id
+          email
+          name
+          avatarUrl
+        }
+      }
+    }
+  }
+}
 `;
 
 export const getProjectByIdQuery = `
@@ -117,7 +147,7 @@ export const getUserQuery = `
     }
   }
 `;
-      
+
 export const getProjectsOfUserQuery = `
   query getUserProjects($id: ID!, $last: Int = 4) {
     user(by: { id: $id }) {

@@ -24,7 +24,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       onClick={onClick}
       type={type || "button"}
-      className={`flexCenter gap-3 rounded-lg px-3 py-2 hover:opacity-70 ${className} disabled:cursor-progress disabled:opacity-50`}
+      className={`flexCenter gap-3 rounded-lg p-3 hover:opacity-70 disabled:cursor-progress disabled:opacity-50 ${className}`}
       disabled={loading}
     >
       {leftIcon && (
