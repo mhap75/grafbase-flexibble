@@ -21,7 +21,7 @@ const UserProfile = ({ user }: UserProfileProps) => {
           />
           <p className="mt-10 text-4xl font-bold">{user?.name}</p>
           <p className="mt-5 max-w-lg text-3xl font-extrabold md:mt-10 md:text-5xl">
-            I’m Software Engineer at JSM 👋
+            I’m a frontend NextJs developer 👋
           </p>
 
           <div className="mt-8 flex w-full flex-wrap gap-5">
